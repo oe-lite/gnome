@@ -1,0 +1,20 @@
+diff -urN atk-2.2.0/atk/Makefile.am atk-2.2.0.mod/atk/Makefile.am
+--- atk-2.2.0/atk/Makefile.am	2011-09-19 19:06:54.000000000 +0200
++++ atk-2.2.0.mod/atk/Makefile.am	2012-10-13 13:24:08.000000000 +0200
+@@ -185,6 +185,7 @@
+ libatk_1_0_la_DEPENDENCIES = atk-win32-res.o atk.def
+ 
+ install-def-file:
++	$(MKDIR_P) $(DESTDIR)$(libdir)
+ 	$(INSTALL) atk.def $(DESTDIR)$(libdir)/atk-1.0.def
+ uninstall-def-file:
+ 	-rm $(DESTDIR)$(libdir)/atk-1.0.def
+@@ -210,7 +211,7 @@
+ endif
+ 
+ atk.def: atk.symbols
+-	(echo -e EXPORTS; $(CPP) -P -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES - <$(srcdir)/atk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > atk.def
++	(echo EXPORTS; $(CPP) -P -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES - <$(srcdir)/atk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > atk.def
+ 
+ atk-$(ATK_API_VERSION).lib: libatk-$(ATK_API_VERSION).la atk.def
+ 	lib -machine:$(LIB_EXE_MACHINE_FLAG) -name:libatk-$(ATK_API_VERSION)-$(LT_CURRENT_MINUS_AGE).dll -def:atk.def -out:$@

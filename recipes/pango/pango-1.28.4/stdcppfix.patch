@@ -1,0 +1,13 @@
+diff -urN pango-1.28.4/configure.in pango-1.28.4n/configure.in
+--- pango-1.28.4/configure.in	2012-04-17 21:49:43.188066425 +0200
++++ pango-1.28.4n/configure.in	2012-04-17 21:50:32.786668112 +0200
+@@ -942,6 +942,9 @@
+         PANGO_VERSION_MICRO=$PANGO_VERSION_MICRO
+ ])
+ 
++# Eliminate -lstdc++ addition to postdeps for cross compiles.
++postdeps_CXX=`echo " $postdeps_CXX " | sed 's, -lstdc++ ,,g'`
++
+ AC_CONFIG_FILES([
+ Makefile 
+ pango/Makefile

@@ -1,0 +1,21 @@
+diff -urN ige-mac-integration-0.9.8/strings/Makefile.in ige-mac-integration-0.9.8.mod/strings/Makefile.in
+--- ige-mac-integration-0.9.8/strings/Makefile.in	2010-06-27 05:10:09.000000000 +0200
++++ ige-mac-integration-0.9.8.mod/strings/Makefile.in	2012-10-09 11:09:31.000000000 +0200
+@@ -16,11 +16,12 @@
+ VPATH = @srcdir@
+ subdir = strings
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
+-datadir = @datadir@
+-libdir = @libdir@
+-datarootdir = @datarootdir@
++destroot = ${DESTDIR}
++prefix = ${destroot}@prefix@
++exec_prefix = ${destroot}@exec_prefix@
++datadir = ${destroot}@datadir@
++libdir = ${destroot}@libdir@
++datarootdir = ${destroot}@datarootdir@
+ localedir = ${datadir}/strings
+ install_sh = @install_sh@
+ mkdir_p = $(install_sh) -d

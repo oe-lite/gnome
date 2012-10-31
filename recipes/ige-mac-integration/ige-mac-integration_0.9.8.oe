@@ -1,0 +1,4 @@
+require ige-mac-integration.inc
+
+SRC_URI = "http://downloads.sourceforge.net/project/gtk-osx/GTK-OSX%20Build/${PN}-${PV}.tar.bz2"
+SRC_URI += "file://dest_dir.patch"

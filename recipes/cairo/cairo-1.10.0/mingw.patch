@@ -1,0 +1,14 @@
+diff -urN cairo-1.10.0/src/cairo.c cairo-1.10.0new//src/cairo.c
+--- cairo-1.10.0/src/cairo.c	2010-09-02 13:38:55.000000000 +0200
++++ cairo-1.10.0new//src/cairo.c	2012-04-03 14:33:23.384369766 +0200
+@@ -100,6 +100,10 @@
+  * space</firstterm>.
+  */
+ 
++#ifdef __MINGW32__
++#define ffs __builtin_ffs
++#endif
++
+ #define CAIRO_TOLERANCE_MINIMUM	_cairo_fixed_to_double(1)
+ 
+ #if !defined(INFINITY)

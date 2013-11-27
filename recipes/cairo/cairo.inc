@@ -4,16 +4,14 @@ LICENSE = "GPLV2"
 RECIPE_TYPES = "machine native"
 
 DEPENDS = "libpng libfontconfig libglib libgthread libgobject libgmodule libgio pixman"
-DEPENDS:>TARGET_OS_linux-gnu = " libX11"
+DEPENDS:>TARGET_OS_linux-gnu = " libX11 libXrender libxcb"
 
 inherit autotools-autoreconf library pkgconfig
 
 SRC_URI = "http://cairographics.org/releases/${PN}-${PV}.tar.gz"
 
-RECIPE_FLAGS += "cairo_quartz"
-EXTRA_OECONF += "${EXTRA_OECONF_QUARTZ}"
-EXTRA_OECONF_QUARTZ = ""
-EXTRA_OECONF_QUARTZ:USE_cairo_quartz = "--enable-quartz=yes"
+EXTRA_OECONF:>TARGET_OS_linux-gnu = " --enable-xcb --enable-xlib-xcb"
+EXTRA_OECONF:>TARGET_OS_darwin = " --enable-quartz=yes"
 
 inherit auto-package-utils
 AUTO_PACKAGE_UTILS = "cairo-trace"

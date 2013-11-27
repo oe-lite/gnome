@@ -1,3 +1,4 @@
 require cairo.inc
 
 SRC_URI += "file://mingw.patch"
+SRC_URI += "file://darwin_32.patch"

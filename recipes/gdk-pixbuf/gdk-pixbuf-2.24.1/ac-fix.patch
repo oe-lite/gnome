@@ -1,0 +1,12 @@
+diff -urN a/configure.ac b/configure.ac
+--- a/configure.ac	2011-12-17 00:50:47.000000000 +0100
++++ b/configure.ac	2013-10-25 02:12:37.748037765 +0200
+@@ -147,7 +147,7 @@
+ AC_SYS_LARGEFILE
+ 
+ AM_PROG_AS
+-AC_PATH_PROG(NM, nm, nm)
++AC_CHECK_TOOLS(NM, nm, nm)
+ 
+ AC_MSG_CHECKING([for some Win32 platform])
+ AS_CASE(["$host"],

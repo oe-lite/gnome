@@ -1,0 +1,12 @@
+diff -urN a/configure.in b/configure.in
+--- a/configure.in	2011-11-10 18:38:03.000000000 +0100
++++ b/configure.in	2013-10-28 13:16:45.186387491 +0100
+@@ -191,7 +191,7 @@
+ AC_SYS_LARGEFILE
+ 
+ AM_PROG_AS
+-AC_PATH_PROG(NM, nm, nm)
++AC_CHECK_TOOLS(NM, nm, nm)
+ 
+ dnl Initialize maintainer mode
+ AM_MAINTAINER_MODE([enable])

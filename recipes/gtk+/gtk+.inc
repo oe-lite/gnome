@@ -2,6 +2,7 @@ DESCRIPTION = "GTK+, or the GIMP Toolkit, is a multi-platform toolkit for creati
 LICENSE = "LGPL-2.1"
 
 RECIPE_TYPES = "machine native"
+RECIPE_FLAGS = "debug"
 
 DEPENDS = "${DEPENDS_NATIVE} cairo pango atk gdk-pixbuf native:gdk-pixbuf-utils"
 DEPENDS_NATIVE = "native:gtk+-utils"
@@ -11,6 +12,7 @@ DEPENDS:>TARGET_OS_linux-gnu = " libX11 libXext libXrender"
 inherit autotools-autoreconf library pkgconfig c++
 
 EXTRA_OECONF:>TARGET_OS_darwin = " --with-gdktarget=quartz"
+EXTRA_OECONF:>USE_debug = " --enable-debug=yes"
 
 EXTRA_OECONF += " --disable-glibtest \
                   --disable-cups \

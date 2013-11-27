@@ -1,0 +1,12 @@
+diff -urN a/src/cocoa_menu_item.c b/src/cocoa_menu_item.c
+--- a/src/cocoa_menu_item.c	2012-09-26 02:19:52.000000000 +0200
++++ b/src/cocoa_menu_item.c	2013-11-07 16:58:47.569884946 +0100
+@@ -524,7 +524,7 @@
+     DEBUG ("\ta separator\n");
+   } else {
+     const gchar* text = get_menu_label_text (menu_item, &label);
+-    NSString *title = [NSString stringWithUTF8String:(text ? text : @"")];
++    NSString *title = [NSString stringWithUTF8String:(text ? text : "")];
+ 
+     GClosure *menu_action =
+       g_cclosure_new_object_swap(G_CALLBACK(gtk_menu_item_activate),

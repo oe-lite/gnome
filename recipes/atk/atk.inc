@@ -1,11 +1,14 @@
+SUMMARY = "ATK, Provides a set of interfaces for accessibility."
 DESCRIPTION = "ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications."
 LICENSE = "LGPL-2.1"
 
 RECIPE_TYPES = "machine native"
 
-DEPENDS = "libgthread libgobject libgmodule libgio native:glib-utils gtk-doc"
 
 inherit autotools-autoreconf library pkgconfig
 
-DEPENDS_${PN} += "${DEPENDS}"
+DEPENDS += "glib-libgobject"
+DEPENDS_${PN} += "libc libffi libglib libgobject libgthread libpcre libpthread"
+RDEPENDS_${PN} += "libc libffi libglib libgobject libgthread libpcre libpthread"
+
 FILES_${PN}-doc += "${datadir}/gtk-doc"

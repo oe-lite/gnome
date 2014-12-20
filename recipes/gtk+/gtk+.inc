@@ -7,17 +7,17 @@ RECIPE_FLAGS = "debug"
 DEPENDS = "${DEPENDS_NATIVE} cairo pango atk gdk-pixbuf native:gdk-pixbuf-utils"
 DEPENDS_NATIVE = "native:gtk+-utils"
 DEPENDS_NATIVE:native = ""
-DEPENDS:>TARGET_OS_linux-gnu = " libX11 libXext libXrender"
+DEPENDS:>HOST_KERNEL_linux = " libX11 libXext libXrender"
 
 inherit autotools-autoreconf library pkgconfig c++
 
-EXTRA_OECONF:>TARGET_OS_darwin = " --with-gdktarget=quartz"
+EXTRA_OECONF:>HOST_KERNEL_darwin = " --with-gdktarget=quartz"
 EXTRA_OECONF:>USE_debug = " --enable-debug=yes"
 
 EXTRA_OECONF += " --disable-glibtest \
                   --disable-cups \
+                  --disable-visibility \
 "
-EXTRA_OECONF:>TARGET_OS_mingw32 = " lt_cv_deplibs_check_method='pass_all'"
 
 DEPENDS_${PN} += "cairo pango atk gdk-pixbuf"
 DEPENDS_${PN}-utils += "gdk-pixbuf"
@@ -29,7 +29,7 @@ PACKAGES += "${PN}-utils"
 GTK_LIBPATH = "gtk-2.0"
 
 HOST_LIBRARY_EXT = ".so"
-HOST_LIBRARY_EXT:HOST_OS_mingw32 = ".dll"
+HOST_LIBRARY_EXT:HOST_LIBC_mingw = ".dll"
 
 FILES_${PN} += "${sysconfdir}/gtk*"
 FILES_${PN}-utils += "${bindir}/gtk*"

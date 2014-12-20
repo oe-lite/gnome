@@ -9,4 +9,4 @@ inherit autotools-autoreconf library pkgconfig
 
 SRC_URI = "http://cairographics.org/releases/${PN}-${PV}.tar.gz"
 
-EXTRA_OECONF:>TARGET_OS_mingw32 = " --enable-static-testprogs"
+EXTRA_OECONF:>HOST_LIBC_mingw = " --enable-static-testprogs"

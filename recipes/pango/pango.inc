@@ -3,10 +3,10 @@ LICENSE = "LGPL-2.1"
 
 RECIPE_TYPES = "machine native"
 
-DEPENDS = "cairo native:glib-utils gtk-doc ${DEPENDS_NATIVE}"
+DEPENDS = "cairo native:glib-utils ${DEPENDS_NATIVE} libiconv"
 DEPENDS:>HOST_KERNEL_linux = " libxrender"
 DEPENDS_NATIVE = "native:pango-utils"
-DEPENDS_NATIVE:native = ""
+DEPENDS_NATIVE:native = "gtk-doc"
 
 inherit autotools-autoreconf library c++ pkgconfig
 
@@ -21,6 +21,8 @@ FILES_${PN} += "${libdir}/${PANGO_LIBPATH}/modules/*${HOST_LIBRARY_EXT}"
 FILES_${PN}-dev += "${libdir}/${PANGO_LIBPATH}/modules"
 FILES_${PN}-dev += "!${libdir}/${PANGO_LIBPATH}/modules/*${HOST_LIBRARY_EXT}"
 FILES_${PN}-utils += "${bindir}/pango*"
+DEPENDS_${PN}-utils += "libiconv"
+RDEPENDS_${PN}-utils += "libiconv"
 FILES_${PN}-doc += "${datadir}/gtk-doc"
 
 HOST_LIBRARY_EXT = ".so"

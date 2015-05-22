@@ -9,6 +9,9 @@ DEPENDS_NATIVE:native = ""
 
 inherit autotools-autoreconf library pkgconfig gettext
 
+require conf/fetch/gnome.conf
+SRC_URI = "${GNOME_MIRROR}/${PN}/${@'.'.join('${PV}'.split('.')[:2])}/${PN}-${PV}.tar.xz"
+
 EXTRA_OECONF += " --disable-glibtest gio_can_sniff=yes --without-libtiff"
 
 PACKAGES += "${PN}-utils"

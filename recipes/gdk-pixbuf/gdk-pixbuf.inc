@@ -7,7 +7,7 @@ DEPENDS = "libgthread libgobject libgmodule libgio libpng libjpeg native:glib-ut
 DEPENDS_NATIVE = "native:gdk-pixbuf-utils"
 DEPENDS_NATIVE:native = ""
 
-inherit autotools-autoreconf library pkgconfig
+inherit autotools-autoreconf library pkgconfig gettext
 
 EXTRA_OECONF += " --disable-glibtest gio_can_sniff=yes --without-libtiff"
 

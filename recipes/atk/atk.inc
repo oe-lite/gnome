@@ -4,10 +4,12 @@ LICENSE = "LGPL-2.1"
 
 RECIPE_TYPES = "machine native"
 
-
 inherit autotools-autoreconf library pkgconfig
 
-DEPENDS += "glib-libgobject"
+require conf/fetch/gnome.conf
+SRC_URI = "${GNOME_MIRROR}/${PN}/${@'.'.join('${PV}'.split('.')[:2])}/${PN}-${PV}.tar.xz"
+
+DEPENDS += "glib-libgobject gnome-common-dev"
 DEPENDS_${PN} += "libc libffi libglib libgobject libgthread libpcre libpthread"
 RDEPENDS_${PN} += "libc libffi libglib libgobject libgthread libpcre libpthread"
 

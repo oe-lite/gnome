@@ -7,7 +7,10 @@ DEPENDS = "libgthread libgobject libgmodule libgio libpng libjpeg native:glib-ut
 DEPENDS_NATIVE = "native:gdk-pixbuf-utils"
 DEPENDS_NATIVE:native = ""
 
-inherit autotools-autoreconf library pkgconfig
+inherit autotools-autoreconf library pkgconfig gettext
+
+require conf/fetch/gnome.conf
+SRC_URI = "${GNOME_MIRROR}/${PN}/${@'.'.join('${PV}'.split('.')[:2])}/${PN}-${PV}.tar.xz"
 
 EXTRA_OECONF += " --disable-glibtest gio_can_sniff=yes --without-libtiff"
 

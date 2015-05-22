@@ -2,6 +2,5 @@ require gdk-pixbuf.inc
 
 PARALLEL_MAKE = ""
 
-SRC_URI  = "http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.24/${PN}-${PV}.tar.xz"
 SRC_URI += "file://mingw.patch"
 SRC_URI += "file://ac-fix.patch"

@@ -4,10 +4,9 @@ LICENSE = "LGPL-2.1"
 
 RECIPE_TYPES = "machine native"
 
-
 inherit autotools-autoreconf library pkgconfig
 
-DEPENDS += "glib-libgobject"
+DEPENDS += "glib-libgobject gnome-common-dev"
 DEPENDS_${PN} += "libc libffi libglib libgobject libgthread libpcre libpthread"
 RDEPENDS_${PN} += "libc libffi libglib libgobject libgthread libpcre libpthread"
 

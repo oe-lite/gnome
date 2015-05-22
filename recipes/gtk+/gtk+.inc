@@ -11,6 +11,9 @@ DEPENDS:>HOST_KERNEL_linux = " libX11 libXext libXrender"
 
 inherit autotools-autoreconf library pkgconfig c++
 
+require conf/fetch/gnome.conf
+SRC_URI = "${GNOME_MIRROR}/${PN}/${@'.'.join('${PV}'.split('.')[:2])}/${PN}-${PV}.tar.bz2"
+
 EXTRA_OECONF:>HOST_KERNEL_darwin = " --with-gdktarget=quartz"
 EXTRA_OECONF:>USE_debug = " --enable-debug=yes"
 

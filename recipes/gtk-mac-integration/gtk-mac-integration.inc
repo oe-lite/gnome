@@ -3,7 +3,9 @@ LICENSE = "LGPL-2.1"
 
 RECIPE_TYPES = "machine native"
 
-DEPENDS = "native:glib-utils gtk-doc gtk+"
+COMPATIBLE_HOST_ARCHS = ".*darwin.*"
+
+DEPENDS = "native:glib-utils gtk+"
 
 inherit autotools library pkgconfig
 

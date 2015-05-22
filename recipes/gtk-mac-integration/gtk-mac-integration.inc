@@ -11,7 +11,8 @@ inherit autotools library pkgconfig
 
 DEPENDS_${PN} += "${DEPENDS}"
 
-SRC_URI = "http://ftp.gnome.org/pub/GNOME/sources/gtk-mac-integration/2.0/${PN}-${PV}.tar.xz"
+require conf/fetch/gnome.conf
+SRC_URI = "${GNOME_MIRROR}/${PN}/${@'.'.join('${PV}'.split('.')[:2])}/${PN}-${PV}.tar.xz"
 
 FILES_${PN}-locale = "${datadir}/strings"
 

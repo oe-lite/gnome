@@ -10,6 +10,9 @@ DEPENDS_NATIVE:native = "gtk-doc"
 
 inherit autotools-autoreconf library c++ pkgconfig
 
+require conf/fetch/gnome.conf
+SRC_URI = "${GNOME_MIRROR}/${PN}/${@'.'.join('${PV}'.split('.')[:2])}/${PN}-${PV}.tar.gz"
+
 PACKAGES += "${PN}-utils"
 
 DEPENDS_${PN} += "${DEPENDS}"
